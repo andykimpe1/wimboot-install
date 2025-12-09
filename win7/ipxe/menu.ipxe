@@ -34,13 +34,13 @@ item --gap --           ---------------------------------------------
 choose --timeout ${menu-timeout} --default ${menu-default} target && goto ${target}
 
 :item1
-chain $(giturl)/raw/refs/heads/main/${winver}/ipxe/menu.ipxe
+chain ${giturl}/raw/refs/heads/main/${winver}/ipxe/menu.ipxe
 
 :item2
-chain $(giturl)/raw/refs/heads/main/${winver}/ipxe/english.ipxe
+chain ${giturl}/raw/refs/heads/main/${winver}/ipxe/english.ipxe
 
 :item3
-chain $(giturl)/raw/refs/heads/main/${winver}/ipxe/french.ipxe
+chain ${giturl}/raw/refs/heads/main/${winver}/ipxe/french.ipxe
 
 :shell
 shell
