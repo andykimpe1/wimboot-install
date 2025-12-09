@@ -101,7 +101,8 @@ goto windowsinstall
 :windowsinstall
 clear menu
 echo install ${winversion} ${arch1} for ${boottype} ${language} language
-
+sleep 60
+goto mainmenu
 
 :shell
 shell
