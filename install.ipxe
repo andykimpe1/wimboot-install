@@ -1,5 +1,7 @@
 #!ipxe
 
+set giturl https://github.com/andykimpe1/wimboot-install
+
 #choose keymap
 set keymap fr
 
