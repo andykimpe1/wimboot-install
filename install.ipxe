@@ -1,5 +1,5 @@
 #!ipxe
-colour --basic 6 --rgb 0x40e0d0 6
+
 set giturl https://github.com/andykimpe1/wimboot-install
 set netboot https://github.com/andykimpe1/ipxe-boot-menu/raw/refs/heads/main/netboot/menu.ipxe
 #set netboot https://boot.netboot.xyz/menu.ipxe
