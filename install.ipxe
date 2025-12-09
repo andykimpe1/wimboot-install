@@ -3,7 +3,7 @@
 #choose keymap
 set keymap fr
 
-set menu-timeout 1000
+set menu-timeout 1000000
 #set menu-timeout 1
 set submenu-timeout ${menu-timeout}
 set menu-default item2
