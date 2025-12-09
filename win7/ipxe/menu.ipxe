@@ -26,8 +26,6 @@ item item2      	                     English
 item --gap --           ---------------------------------------------
 item item3      	                      French
 item --gap --           ---------------------------------------------
-item item5		                         netboot
-item --gap --           ---------------------------------------------
 item shell                            Shell iPXE
 item --gap --           ---------------------------------------------
 item exit              	                Exit
@@ -36,17 +34,13 @@ item --gap --           ---------------------------------------------
 choose --timeout ${menu-timeout} --default ${menu-default} target && goto ${target}
 
 :item1
-chain https://raw.githubusercontent.com/andykimpe1/wimboot-install/refs/heads/main/install.ipxe
+chain $(giturl)/raw/refs/heads/main/${winver}/ipxe/menu.ipxe
 
 :item2
-chain https://raw.githubusercontent.com/andykimpe1/wimboot-install/refs/heads/main/${winver}/ipxe/english.ipxe
+chain $(giturl)/raw/refs/heads/main/${winver}/ipxe/english.ipxe
 
 :item3
-chain https://raw.githubusercontent.com/andykimpe1/wimboot-install/refs/heads/main/${winver}/ipxe/french.ipxe
-
-:item5
-chain https://raw.githubusercontent.com/andykimpe1/ipxe-boot-menu/refs/heads/main/netboot/menu.ipxe
-
+chain $(giturl)/raw/refs/heads/main/${winver}/ipxe/french.ipxe
 
 :shell
 shell
