@@ -75,12 +75,12 @@ item --gap --           ---------------------------------------------
 
 choose --timeout ${menu-timeout} --default ${menu-default} target && goto ${target}
 
-:item2
-chain ${giturl}/raw/refs/heads/main/win7/ipxe/menu.ipxe
+#:item2
+#chain ${giturl}/raw/refs/heads/main/win7/ipxe/menu.ipxe
 
 
-:item3
-chain ${giturl}/raw/refs/heads/main/win10/ipxe/menu.ipxe
+#:item3
+#chain ${giturl}/raw/refs/heads/main/win10/ipxe/menu.ipxe
 
 
 :netbootmenu
