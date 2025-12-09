@@ -16,13 +16,13 @@ item item1                       start to local drive
 item --gap --           ---------------------------------------------
 item item2      	                windows 7 Install                  
 item --gap --           ---------------------------------------------
-item item3		                    Windows 10 Install
+item item3		                    Windows 10 Install                 
 item --gap --           ---------------------------------------------
 item item4		                    return netboot menu                
 item --gap --           ---------------------------------------------
 item shell                            Shell iPXE                     
 item --gap --           ---------------------------------------------
-item exit               	                Exit                        
+item exit               	                Exit                       
 item --gap --           ---------------------------------------------
 
 choose --timeout ${menu-timeout} --default ${menu-default} target && goto ${target}
