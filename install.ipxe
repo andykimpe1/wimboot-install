@@ -10,12 +10,18 @@ set menu-timeout 1000000
 #set menu-timeout 1
 set submenu-timeout ${menu-timeout}
 set menu-default item2
+:checkarch
 iseq ${buildarch} x86_64 && goto x86_64 || goto checkarch2
 :checkarch2
 iseq ${buildarch} i386 && goto i386 || goto checkarch3
 :checkarch3
-iseq ${buildarch} arm32 && echo arm32 not compatibility for windows install && sleep 60 && goto netbootmenu || goto netbootmenu
-iseq ${buildarch} arm64 && echo arm64 not compatibility for windows install && sleep 60 && goto netbootmenu || goto netbootmenu
+iseq ${buildarch} arm32 && goto arm || goto checkarch
+iseq ${buildarch} arm64 && goto arm || goto checkarch
+
+:arm
+arm not compatibility for windows install
+sleep 60
+goto netbootmenu
 
 :x86_64
 set arch1 x86_64
