@@ -9,18 +9,18 @@ set submenu-timeout ${menu-timeout}
 set menu-default item2
 
 menu
-item --gap -------------------------------------------
+item --gap --           -------------SEPARATION 1----------------
 item item1          start to local drive
-item --gap -------------------------------------------
+item --gap --           -------------SEPARATION 1----------------
 item item2      	  windows 7 Install
-item --gap -------------------------------------------
+item --gap --           ---------------------------------------------
 item item3		      Windows 10 Install
-item --gap -------------------------------------------
+item --gap --           ---------------------------------------------
 item item4		      return netboot menu
 item shell             Shell iPXE
-item --gap -------------------------------------------
+item --gap --           ---------------------------------------------
 item exit               	Exit
-item --gap -------------------------------------------
+item --gap --           ---------------------------------------------
 
 choose --timeout ${menu-timeout} --default ${menu-default} target && goto ${target}
 
