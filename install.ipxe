@@ -3,47 +3,104 @@
 set giturl https://github.com/andykimpe1/wimboot-install
 set netboot https://github.com/andykimpe1/ipxe-boot-menu/raw/refs/heads/main/menu.ipxe
 #set netboot https://boot.netboot.xyz/menu.ipxe
-
-#choose keymap
-set keymap fr
-
+set nloc ${netX/busloc}
+set pciid ${pci/${nloc}.0.2}${pci/${nloc}.2.2}
+set language english
 set menu-timeout 1000000
 #set menu-timeout 1
 set submenu-timeout ${menu-timeout}
 set menu-default item2
+iseq ${buildarch} x86_64 && goto x86_64
+iseq ${buildarch} i386 && goto i386
+iseq ${buildarch} arm32 && echo arm32 not compatibility for windows install && sleep 60 && goto netbootmenu
+iseq ${buildarch} arm64 && echo arm64 not compatibility for windows install && sleep 60 && goto netbootmenu
 
+:x86_64
+set arch1 x86_64
+set arch2 x64
+set arch3 x86_64
+goto detectbios
+:i386
+set arch1 x86
+set arch2 i386
+set arch3 i386
+goto detectbios
+:detectbios
+iseq ${platform} efi && set boottype efi || clear boottype
+
+:mainmenu
+clear menu
 menu
 item --gap --           ---------------------------------------------
-item item1                       start to local drive                
+item local                       start to local drive                
 item --gap --           ---------------------------------------------
-item item2      	                windows 7 Install                  
+item windows7menu      	                windows 7 Install                  
 item --gap --           ---------------------------------------------
-item item3		                    Windows 10 Install                 
+item windows10menu		                    Windows 10 Install                 
 item --gap --           ---------------------------------------------
-item item4		                    return netboot menu                
+item netbootmenu		                    return netboot menu                
 item --gap --           ---------------------------------------------
 item shell                            Shell iPXE                     
 item --gap --           ---------------------------------------------
 item exit               	                Exit                       
 item --gap --           ---------------------------------------------
+choose --timeout ${menu-timeout} --default ${menu-default} target && goto ${target}
+
+:local
+sanboot --no-describe --drive 1
+
+
+:windows7menu
+set winver win7
+set winversion windows7
+goto languageselect
+
+:windows10menu
+set winver win7
+set winversion windows7
+goto languageselect
+
+:languageselect
+clear menu
+menu
+item --gap --           ---------------------------------------------
+item mainmenu            	                Return
+item --gap --           ---------------------------------------------
+item --gap --               Select Language for your installation
+item --gap --           ---------------------------------------------
+item english      	                     English
+item --gap --           ---------------------------------------------
+item french      	                      French
+item --gap --           ---------------------------------------------
 
 choose --timeout ${menu-timeout} --default ${menu-default} target && goto ${target}
 
-:item1
-sanboot --no-describe --drive 1
-
 :item2
-set conn_type https
 chain ${giturl}/raw/refs/heads/main/win7/ipxe/menu.ipxe
 
 
 :item3
-set conn_type https
 chain ${giturl}/raw/refs/heads/main/win10/ipxe/menu.ipxe
 
-:item4
+
+:netbootmenu
 chain ${netboot}
-goto menu
+
+:english
+set keymap en
+set language english
+goto windowsinstall
+
+
+
+:french
+set keymap fr
+set language french
+goto windowsinstall
+
+:windowsinstall
+clear menu
+echo install ${winversion} ${arch1} for ${boottype} ${language} language
 
 
 :shell
