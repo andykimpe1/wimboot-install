@@ -25,15 +25,15 @@ sanboot --no-describe --drive 1
 
 :item2
 set conn_type https
-chain https://raw.githubusercontent.com/amidevous/wimboot-install/main/win7/ipxe/menu.ipxe
+chain https://raw.githubusercontent.com/andykimpe1/wimboot-install/main/win7/ipxe/menu.ipxe
 
 
 :item3
 set conn_type https
-chain https://raw.githubusercontent.com/amidevous/wimboot-install/main/win10/ipxe/menu.ipxe
+chain https://raw.githubusercontent.com/andykimpe1/wimboot-install/main/win10/ipxe/menu.ipxe
 
 :item4
-chain https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/netboot.ipxe
+chain https://raw.githubusercontent.com/andykimpe1/ipxe-boot-menu/refs/heads/main/menu.ipxe
 goto menu
 
 
