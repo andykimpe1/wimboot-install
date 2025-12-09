@@ -30,10 +30,12 @@ choose --timeout ${menu-timeout} --default ${menu-default} target && goto ${targ
 
 :item1
 set conn_type https
-chain https://raw.githubusercontent.com/andykimpe1/wimboot-install/refs/heads/main/install.ipxe
+chain ${giturl}/raw/refs/heads/main/install.ipxe
 
 :item2
-set conn_type https
+set arch1 x86
+set arch2 x86
+set arch3 i386
 kernel ${giturl}/releases/download/${winversion}/wimboot.i386 wimboot gui quiet || shell
 initrd ${giturl}/releases/download/${winversion}/bcd.i386 bcd
 initrd ${giturl}/releases/download/${winversion}/boot.i386.sdi boot.sdi
@@ -113,34 +115,34 @@ goto skip_virtio-2
 iseq ${pciid} 8086100e-2 && goto use_vbox-2 ||
 goto skip_vbox-2
 :use_vbox-2
-initrd https://raw.githubusercontent.com/andykimpe1/wimboot-install/refs/heads/main/win10/drv/vbox/VBoxGuest.inf VBoxGuest.inf
-initrd https://raw.githubusercontent.com/andykimpe1/wimboot-install/refs/heads/main/win10/drv/vbox/VBoxGuest.cat VBoxGuest.cat
-initrd https://raw.githubusercontent.com/andykimpe1/wimboot-install/refs/heads/main/win10/drv/vbox/VBoxGuest.sys VBoxGuest.sys
-initrd https://raw.githubusercontent.com/andykimpe1/wimboot-install/refs/heads/main/win10/drv/vbox/VBoxGuestEarlyNT.cat VBoxGuestEarlyNT.cat
-initrd https://raw.githubusercontent.com/andykimpe1/wimboot-install/refs/heads/main/win10/drv/vbox/VBoxGuestEarlyNT.inf VBoxGuestEarlyNT.inf
-initrd https://raw.githubusercontent.com/andykimpe1/wimboot-install/refs/heads/main/win10/drv/vbox/VBoxMouse.cat VBoxMouse.cat
-initrd https://raw.githubusercontent.com/andykimpe1/wimboot-install/refs/heads/main/win10/drv/vbox/VBoxMouse.inf VBoxMouse.inf
-initrd https://raw.githubusercontent.com/andykimpe1/wimboot-install/refs/heads/main/win10/drv/vbox/VBoxMouse.sys VBoxMouse.sys
-initrd https://raw.githubusercontent.com/andykimpe1/wimboot-install/refs/heads/main/win10/drv/vbox/VBoxVideo.cat VBoxVideo.cat
-initrd https://raw.githubusercontent.com/andykimpe1/wimboot-install/refs/heads/main/win10/drv/vbox/VBoxVideo.inf VBoxVideo.inf
-initrd https://raw.githubusercontent.com/andykimpe1/wimboot-install/refs/heads/main/win10/drv/vbox/VBoxVideo.sys VBoxVideo.sys
-initrd https://raw.githubusercontent.com/andykimpe1/wimboot-install/refs/heads/main/win10/drv/vbox/VBoxVideoEarlyNT.cat VBoxVideoEarlyNT.cat
-initrd https://raw.githubusercontent.com/andykimpe1/wimboot-install/refs/heads/main/win10/drv/vbox/VBoxVideoEarlyNT.inf VBoxVideoEarlyNT.inf
-initrd https://raw.githubusercontent.com/andykimpe1/wimboot-install/refs/heads/main/win10/drv/vbox/VBoxWddm.cat VBoxWddm.cat
-initrd https://raw.githubusercontent.com/andykimpe1/wimboot-install/refs/heads/main/win10/drv/vbox/VBoxWddm.inf VBoxWddm.inf
-initrd https://raw.githubusercontent.com/andykimpe1/wimboot-install/refs/heads/main/win10/drv/vbox/VBoxWddm.sys VBoxWddm.sys
-initrd https://raw.githubusercontent.com/andykimpe1/wimboot-install/refs/heads/main/win10/drv/vbox/vboxguest.cat vboxguest.cat
-initrd https://raw.githubusercontent.com/andykimpe1/wimboot-install/refs/heads/main/win10/drv/vbox/vboxmouse.cat vboxmouse.cat
-initrd https://raw.githubusercontent.com/andykimpe1/wimboot-install/refs/heads/main/win10/drv/vbox/vboxwddm.cat vboxwddm.cat
+initrd ${giturl}/raw/heads/main/${winver}/drv/vbox/VBoxGuest.inf VBoxGuest.inf
+initrd ${giturl}/raw/refs/heads/main/${winver}/drv/vbox/VBoxGuest.cat VBoxGuest.cat
+initrd ${giturl}/raw/refs/heads/main/${winver}/drv/vbox/VBoxGuest.sys VBoxGuest.sys
+initrd ${giturl}/raw/refs/heads/main/${winver}/drv/vbox/VBoxGuestEarlyNT.cat VBoxGuestEarlyNT.cat
+initrd ${giturl}/raw/refs/heads/main/${winver}/drv/vbox/VBoxGuestEarlyNT.inf VBoxGuestEarlyNT.inf
+initrd ${giturl}/raw/refs/heads/main/${winver}/drv/vbox/VBoxMouse.cat VBoxMouse.cat
+initrd ${giturl}/raw/refs/heads/main/${winver}/drv/vbox/VBoxMouse.inf VBoxMouse.inf
+initrd ${giturl}/raw/refs/heads/main/${winver}/drv/vbox/VBoxMouse.sys VBoxMouse.sys
+initrd ${giturl}/raw/refs/heads/main/${winver}/drv/vbox/VBoxVideo.cat VBoxVideo.cat
+initrd ${giturl}/raw/refs/heads/main/${winver}/drv/vbox/VBoxVideo.inf VBoxVideo.inf
+initrd ${giturl}/raw/refs/heads/main/${winver}/drv/vbox/VBoxVideo.sys VBoxVideo.sys
+initrd ${giturl}/raw/refs/heads/main/${winver}/drv/vbox/VBoxVideoEarlyNT.cat VBoxVideoEarlyNT.cat
+initrd ${giturl}/raw/refs/heads/main/${winver}/drv/vbox/VBoxVideoEarlyNT.inf VBoxVideoEarlyNT.inf
+initrd ${giturl}/raw/refs/heads/main/${winver}/drv/vbox/VBoxWddm.cat VBoxWddm.cat
+initrd ${giturl}/raw/refs/heads/main/${winver}/drv/vbox/VBoxWddm.inf VBoxWddm.inf
+initrd ${giturl}/raw/refs/heads/main/${winver}/drv/vbox/VBoxWddm.sys VBoxWddm.sys
+initrd ${giturl}/raw/refs/heads/main/${winver}/drv/vbox/vboxguest.cat vboxguest.cat
+initrd ${giturl}/raw/refs/heads/main/${winver}/drv/vbox/vboxmouse.cat vboxmouse.cat
+initrd ${giturl}/raw/refs/heads/main/${winver}/drv/vbox/vboxwddm.cat vboxwddm.cat
 goto skip_vbox-2
 :skip_vbox-2
-initrd https://raw.githubusercontent.com/andykimpe1/wimboot-install/refs/heads/main/win7/autounattend/x64/efi/autounattend.xml autounattend.xml
-initrd https://raw.githubusercontent.com/andykimpe1/wimboot-install/refs/heads/main/win7/autounattend/x64/legacy/7-zip.dll 7-zip.dll
-initrd https://raw.githubusercontent.com/andykimpe1/wimboot-install/refs/heads/main/win7/autounattend/x64/legacy/7-zip32.dll 7-zip32.dll
-initrd https://raw.githubusercontent.com/andykimpe1/wimboot-install/refs/heads/main/win7/autounattend/x64/legacy/7z.dll 7z.dll
-initrd https://raw.githubusercontent.com/andykimpe1/wimboot-install/refs/heads/main/win7/autounattend/x64/legacy/7z.exe 7z.exe
+initrd ${giturl}/raw/refs/heads/main/${winver}/autounattend/x64/efi/autounattend.xml autounattend.xml
+initrd ${giturl}/raw/refs/heads/main/${winver}/autounattend/x64/legacy/7-zip.dll 7-zip.dll
+initrd ${giturl}/raw/refs/heads/main/${winver}/autounattend/x64/legacy/7-zip32.dll 7-zip32.dll
+initrd ${giturl}/raw/refs/heads/main/${winver}/autounattend/x64/legacy/7z.dll 7z.dll
+initrd ${giturl}/raw/refs/heads/main/${winver}/autounattend/x64/legacy/7z.exe 7z.exe
 initrd https://www.cygwin.com/setup-x86.exe setup-x86.exe
-initrd https://github.com/andykimpe1/wimboot-install/releases/download/windows10/boot.wim boot.wim
+initrd ${giturl}/releases/download/windows10/boot.wim boot.wim
 boot || goto menu
 
 
@@ -261,7 +263,7 @@ initrd https://raw.githubusercontent.com/andykimpe1/wimboot-install/refs/heads/m
 initrd https://raw.githubusercontent.com/andykimpe1/wimboot-install/refs/heads/main/win7/autounattend/x64/legacy/7-zip32.dll 7-zip32.dll
 initrd https://raw.githubusercontent.com/andykimpe1/wimboot-install/refs/heads/main/win7/autounattend/x64/legacy/7z.dll 7z.dll
 initrd https://raw.githubusercontent.com/andykimpe1/wimboot-install/refs/heads/main/win7/autounattend/x64/legacy/7z.exe 7z.exe
-initrd https://github.com/andykimpe1/wimboot-install/releases/download/windows10/boot.wim boot.wim
+initrd https://github.com/andykimpe1/wimboot-install/releases/download/${winversion}/boot.wim boot.wim
 boot || goto menu
 
 
