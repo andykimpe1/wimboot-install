@@ -1,6 +1,8 @@
 #!ipxe
 
 set giturl https://github.com/andykimpe1/wimboot-install
+set netboot https://github.com/andykimpe1/ipxe-boot-menu/raw/refs/heads/main/menu.ipxe
+#set netboot https://boot.netboot.xyz/menu.ipxe
 
 #choose keymap
 set keymap fr
@@ -40,7 +42,7 @@ set conn_type https
 chain ${giturl}/raw/refs/heads/main/win10/ipxe/menu.ipxe
 
 :item4
-chain ${giturl}/raw/refs/heads/main/menu.ipxe
+chain ${netboot}
 goto menu
 
 
